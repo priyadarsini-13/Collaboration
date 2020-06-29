@@ -17,18 +17,21 @@ public class LoginController {
 	@Autowired
 	ICustomerDAO customerdao;
 	@PostMapping("/login")
-	 ResponseEntity<String> login(@RequestBody Customer customer,HttpSession httpsession){
+	 ResponseEntity<Customer> login(@RequestBody Customer customer,HttpSession httpsession){
 	
-		String result=customerdao.checkUser(customer);
-		if(result.equals("Employer")||result.equals("Employee")||result.equals("Admin"))
+		Customer result=customerdao.checkUser(customer);
+		
+		if(result!=null)
 		{
-			httpsession.setAttribute("custdetails",customerdao.selectCustomer(customer.getCust_Email()));
-			httpsession.setAttribute("userrole", result);
-             return new ResponseEntity<String>(result, HttpStatus.OK);
+			
+			httpsession.setAttribute("custdetails",result);
+			
+             return new ResponseEntity<Customer>(result, HttpStatus.OK);
 			}
 		else
 		{
-			return new ResponseEntity<String>(result, HttpStatus.NOT_ACCEPTABLE);
+			
+			return new ResponseEntity<Customer>(result, HttpStatus.NOT_ACCEPTABLE);
 		}
 	
 	}
