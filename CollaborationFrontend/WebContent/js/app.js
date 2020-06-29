@@ -10,12 +10,14 @@
 *angular js routing----navigate  from one page to another with no page reloading
 *mongo---databse--nosql---json---there no transaction acid
 */
-var myApp=angular.module("frontapp",["ngRoute"]);
+var myApp=angular.module('frontApp',['ngRoute']);
 myApp.config(function($routeProvider)
 		{
-	$routeprovider.when("/",{templateUrl:"home.html"})
+	$routeProvider.when("/",{templateUrl:"home.html"})
+	.when("/home",{templateUrl:"home.html"})
 	.when("/aboutus",{templateUrl:"aboutus.html"})
-	.when("/contactus",{templateUrl:"contactus.html"});
-	
+	.when("/contactus",{templateUrl:"contactus.html"})
+	.when("/register",{templateUrl:"register.html"})
+	.when("/login",{templateUrl:"login.html"});
 		}
 );
