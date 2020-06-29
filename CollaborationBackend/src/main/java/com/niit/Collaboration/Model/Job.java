@@ -6,14 +6,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class Job {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	int job_Id;
+	
 	
 	@Column(nullable = false, unique = true)
 	 String job_Title;
@@ -27,6 +32,11 @@ public class Job {
 	@Column(nullable = false)
 	 int salary;
 	
+	@ManyToOne
+	@OnDelete(action=OnDeleteAction.CASCADE)
+	Customer customer;
+	
+
 	@Column(nullable = false)
 	 int vacancy;
 	
@@ -38,8 +48,8 @@ public class Job {
 	@Temporal(TemporalType.DATE)
 	 Date last_Date;
 	
-	@Column(nullable = false)
-	 String job_Status;
+	@Column(nullable = false,columnDefinition="boolean default false")
+	boolean job_Status;
 
 	public int getJob_Id() {
 		return job_Id;
@@ -81,6 +91,14 @@ public class Job {
 		this.salary = salary;
 	}
 
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
 	public int getVacancy() {
 		return vacancy;
 	}
@@ -105,13 +123,16 @@ public class Job {
 		this.last_Date = last_Date;
 	}
 
-	public String getJob_Status() {
+	public boolean isJob_Status() {
 		return job_Status;
 	}
 
-	public void setJob_Status(String job_Status) {
+	public void setJob_Status(boolean job_Status) {
 		this.job_Status = job_Status;
 	}
+	
+	
+	
 	
 	
 }

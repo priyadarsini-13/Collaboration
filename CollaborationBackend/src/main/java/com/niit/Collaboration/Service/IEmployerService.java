@@ -15,7 +15,7 @@ public interface IEmployerService {
 	public boolean updateBlog(Blog blog);
 	public boolean deleteBlog(Blog blog);
 	public ArrayList<Blog> selectAllApporovedBlogs();
-	public ArrayList<Blog> selectAllBlogOfOneUser(int cust_Id);
+	public ArrayList<Blog> selectAllBlogOfOneUser(Customer cust);
 
 	public boolean addBlogComment(BlogComment blog);
 	public boolean updateBlogComment(BlogComment blog);
@@ -32,7 +32,7 @@ public interface IEmployerService {
 	public boolean addJob(Job job);
 	public boolean updateJob(Job job);
 	public boolean deleteJob(Job job);
-	public ArrayList<Job> selectAllJobOfOneUser(int cust_Id);
+	public ArrayList<Job> selectAllJobOfOneUser(Customer cust);
 	
 	
 	public ArrayList<AppliedJob> selectAllAppliedJob(Job job);

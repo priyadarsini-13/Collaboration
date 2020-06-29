@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.niit.Collaboration.DAO.IJobDAO;
 import com.niit.Collaboration.Model.Blog;
+import com.niit.Collaboration.Model.Customer;
 import com.niit.Collaboration.Model.Job;
 @Repository("jobdao")
 @Transactional
@@ -35,6 +36,7 @@ try {
 			sessionfactory.getCurrentSession().update(job);
 			return true;
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return false;
 		}
 	}
@@ -55,20 +57,22 @@ try {
 	public ArrayList<Job> selectAllApporovedJobs() {
 		try {
 			 return (ArrayList<Job>) sessionfactory.getCurrentSession()
-					.createCriteria(Job.class).add(Restrictions.eq("status",true)).list();
+					.createCriteria(Job.class).add(Restrictions.eq("job_Status",true)).list();
 		
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return null;
 		}	}
 		
 
 	@Override
-	public ArrayList<Job> selectAllJobOfOneUser(int cust_Id) {
+	public ArrayList<Job> selectAllJobOfOneUser(Customer cust) {
 		try {
 			 return (ArrayList<Job>) sessionfactory.getCurrentSession()
-					.createCriteria(Job.class).add(Restrictions.eq("customer",cust_Id)).list();
+					.createCriteria(Job.class).add(Restrictions.eq("customer",cust)).list();
 		
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return null;
 			}
 	}
@@ -77,9 +81,10 @@ try {
 	public ArrayList<Job> selectAllUnapporovedJobs() {
 		try {
 			 return (ArrayList<Job>) sessionfactory.getCurrentSession()
-					.createCriteria(Job.class).add(Restrictions.eq("status",false)).list();
+					.createCriteria(Job.class).add(Restrictions.eq("job_Status",false)).list();
 		
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return null;
 		}	}
 
@@ -87,9 +92,10 @@ try {
 	public Job selectOneJob(int jobid) {
 		try {
 			 return (Job) sessionfactory.getCurrentSession()
-					.createCriteria(Job.class).add(Restrictions.eq("jobid",jobid)).list();
+					.createCriteria(Job.class).add(Restrictions.eq("job_Id",jobid)).uniqueResult();
 		
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return null;
 			}
 

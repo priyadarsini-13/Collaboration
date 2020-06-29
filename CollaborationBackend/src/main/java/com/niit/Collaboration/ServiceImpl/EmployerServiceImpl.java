@@ -54,7 +54,7 @@ public class EmployerServiceImpl implements IEmployerService {
 	}
 
 	@Override
-	public ArrayList<Blog> selectAllBlogOfOneUser(int cust_Id) {
+	public ArrayList<Blog> selectAllBlogOfOneUser(Customer cust) {
 
 		return blogdao.selectAllUnapporovedBlogs();
 	}
@@ -138,9 +138,9 @@ public class EmployerServiceImpl implements IEmployerService {
 	}
 
 	@Override
-	public ArrayList<Job> selectAllJobOfOneUser(int cust_Id) {
+	public ArrayList<Job> selectAllJobOfOneUser(Customer cust) {
 		
-		return jobdao.selectAllJobOfOneUser(cust_Id);
+		return jobdao.selectAllJobOfOneUser(cust);
 	}
 
 	@Override
