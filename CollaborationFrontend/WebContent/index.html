@@ -11,9 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://use.fontawesome.com/ded002a609.js"></script>
+    <script> type="text/javascript"
+    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"</script>
     <script src="js/app.js"></script>
      <script src="js/registercontroller.js"></script>
       <script src="js/logincontroller.js"></script>
+      <script src="js/blogcontroller.js"></script>
+      <script src="js/jobcontroller.js"></script>
+      <script src="js/forumcontroller.js"></script>
 <style>
         body {
             margin: 0;
@@ -222,8 +227,20 @@ span {
               <li class="nav-list-item">
                 <a href="#/register" class="nav-link">Register</a>
             </li>
+              <li class="nav-list-item">
+                <a href="#/blog" class="nav-link">Blogs</a>
+            </li>
+             <li class="nav-list-item">
+                <a href="#/job" class="nav-link">Job</a>
+            </li>
+             <li class="nav-list-item">
+                <a href="#/forum" class="nav-link">Forum</a>
+            </li>
              <li class="nav-list-item">
                 <a href="#/login" class="nav-link">Login</a>
+            </li>
+            <li class="nav-list-item" ng-show="$rootScope.loggeduser.cust_Role=='Admin'">
+                <a href="#/blogstoapprove" class="nav-link"></a>
             </li>
         </ul>
 

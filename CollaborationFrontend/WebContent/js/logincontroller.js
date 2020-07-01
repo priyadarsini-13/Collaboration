@@ -5,7 +5,7 @@ angular
 		.module('frontApp')
 		.controller(
 				'lcontrol',
-				function($scope,$location,$http,$rootScope) {
+				function($scope,$location,$http,$rootScope,$cookieStore) {
 					var mydata = this;
 					mydata.customer = {
 						cust_Email : "",
@@ -29,9 +29,9 @@ angular
 									alert("LoginSuccessful");
 									mydata.onlineuser=response.data;
 									$rootScope.loggeduser=mydata.onlineuser;
-								//	$cookieStore.put('loggeduser',$rootScope.loggeduser);
-									$rootScope.loginstatus="loggedin";
-								//	$cookieStore.put('loggedin',$rootScope.loginstatus);
+									$cookieStore.put('loggeduser',$rootScope.loggeduser);
+									$rootScope.loginstatus=true;
+							        $cookieStore.put('loggedin',$rootScope.loginstatus);
 									if(mydata.onlineuser.cust_Role=='Employee'){
 										$location.path("/home");
 									}
