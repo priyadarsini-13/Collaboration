@@ -1,0 +1,14 @@
+<div class="container" ng-controller="jcontrol as j">
+<div class="span8" ng-repeat="cust in j.customers">
+    <h1>{{cust.job_Title}}</h1>  <a class="btn" ng-click="j.approveJob(cust.job_Id)" href= "">Approve</a>
+    <h5>{{cust.job_Description}}</h5>
+      <p>SALARY:{{cust.salary}}</p>
+   <p>SKILLSET :{{cust.skillset}}</p>
+ 
+   <p>VACANCIES:{{cust.vacancy}}</p>
+ 
+    <div>
+        <span class="badge badge-success">postedDate:{{cust.posted_Date}}</span> <span class="badge badge-success">LastDate:{{cust.last_Date}}</span>
+   </div>
+</div>
+</div>

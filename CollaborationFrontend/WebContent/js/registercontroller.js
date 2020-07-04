@@ -20,6 +20,7 @@ angular
 						cust_Role : ""
 					};
 					mydata.createUser = createUser;
+				
 					function createUser() {
 						$http
 								.post(
@@ -32,5 +33,5 @@ angular
 									alert("Registration not Successful");
 								});
 					}
-
+					
 				})

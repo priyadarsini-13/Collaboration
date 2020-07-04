@@ -21,16 +21,22 @@ myApp.config(function($routeProvider) {
 		templateUrl : "register.html"
 	})
 
-	.when("/job", {
+	.when("/addjob", {
 		templateUrl : "job.html"
-	}).when("/forum", {
+	}).when("/addforum", {
 		templateUrl : "forum.html"
+	}).when("/viewforum", {
+		templateUrl : "viewforum.html"
 	}).when("/login", {
 		templateUrl : "login.html"
 	}).when("/addblog", {
 		templateUrl : "blog.html"
 	}).when("/viewblog", {
 		templateUrl : "viewblog.html"
+	}).when("/viewforum", {
+		templateUrl : "viewforum.html"
+	}).when("/viewjob", {
+		templateUrl : "viewjob.html"
 	}).when("/blogstoapprove", {
 		templateUrl : "blogstoapprove.html"
 	}).when("/myblog", {
@@ -43,8 +49,8 @@ myApp.run(function($rootScope, $location, $http,$route) {
 		var status = $rootScope.loggedin;
 		var role = $rootScope.loggeduser;
 		var emp_Page = [];
-		var empr_Page = [ '/addblog','/addjob','/addforum' ];
-		var admin_Page = [];
+		var empr_Page = [ '/addblog','/viewblog','/addjob','/viewjob' ];
+		var admin_Page = ['/addforum','/viewforum'];
 		var currenturl = $location.path();
 		var isemppage = $.inArray(currenturl, emp_Page) >= 0;
 		var isemprpage = $.inArray(currenturl, empr_Page) >= 0;

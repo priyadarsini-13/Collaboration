@@ -12,11 +12,14 @@ angular
 						job_Description:"",
 						salary:"",
 						skillset:"",
-						vacancy:"",
+						vacancy:0,
 						last_Date:""
 					};
 					mydata.createUser = createUser;
+					mydata.approveJob = approveJob;
+					getUsers();
 					function createUser() {
+						alert(mydata.job.vacancy);
 						$http
 								.post(
 										'http://localhost:8080/CollaborationMiddleware/job/addjob',
@@ -26,7 +29,33 @@ angular
 									$location.path("/job");
 								}, function(errresponse) {
 									alert(" Not Successful");
-								});
+								})
 					}
 
-				})
+				
+				function getUsers()
+					{
+						$http
+						.get('http://localhost:8080/CollaborationMiddleware/job/adminapproval')
+								.then(function(response){
+									mydata.customers=null;
+									
+								},function(errresponse){
+									mydata.customers=errresponse.data;
+									console.log(mydata.customers);
+								})
+								
+					}
+
+				function approveJob(job_Id) {
+					$http
+							.get(
+									'http://localhost:8080/CollaborationMiddleware/job/updatejobstatus?job_Id=job_Id')
+							.then(function(response) {
+								alert("Jobstatus updated");
+							}, function(errresponse) {
+								alert("Jobstatus not updated" );
+							});
+
+				}
+				});

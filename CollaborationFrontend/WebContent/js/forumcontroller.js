@@ -11,6 +11,7 @@ angular
 						forum_Title:""
 					};
 					mydata.createUser = createUser;
+					getUsers();
 					function createUser() {
 						$http
 								.post(
@@ -22,6 +23,19 @@ angular
 								}, function(errresponse) {
 									alert(" Not Successful");
 								});
+					}
+					function getUsers()
+					{
+						$http
+						.get('http://localhost:8080/CollaborationMiddleware/forum/allforum')
+								.then(function(response){
+									mydata.customers=null;
+									
+								},function(errresponse){
+									mydata.customers=errresponse.data;
+									console.log(mydata.customers);
+								})
+								
 					}
 
 				})
