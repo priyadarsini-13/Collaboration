@@ -33,6 +33,8 @@ myApp.config(function($routeProvider) {
 		templateUrl : "blog.html"
 	}).when("/viewblog", {
 		templateUrl : "viewblog.html"
+	}).when("/allblog", {
+		templateUrl : "allblog.html"
 	}).when("/viewforum", {
 		templateUrl : "viewforum.html"
 	}).when("/viewjob", {
@@ -49,7 +51,7 @@ myApp.run(function($rootScope, $location, $http,$route) {
 		var status = $rootScope.loggedin;
 		var role = $rootScope.loggeduser;
 		var emp_Page = [];
-		var empr_Page = [ '/addblog','/viewblog','/addjob','/viewjob' ];
+		var empr_Page = [ '/addblog','/viewblog','allblog','/addjob','/viewjob', ];
 		var admin_Page = ['/addforum','/viewforum'];
 		var currenturl = $location.path();
 		var isemppage = $.inArray(currenturl, emp_Page) >= 0;

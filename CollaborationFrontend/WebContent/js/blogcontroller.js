@@ -13,6 +13,7 @@ angular
 					};
 					mydata.createUser = createUser;
 					mydata.approveBlog = approveBlog;
+					getallBlogs();
 					getUsers();// this s to call my function call statement.
 					function createUser() {
 						$http
@@ -30,18 +31,18 @@ angular
 								.get(
 										'http://localhost:8080/CollaborationMiddleware/blog/adminapproval')
 								.then(function(response) {
-									mydata.customers = null;
+									mydata.unapprovedcustomers = null;
 
 								}, function(errresponse) {
-									mydata.customers = errresponse.data;
-									console.log(mydata.customers);
+									mydata.unapprovedcustomers = errresponse.data;
+								//	console.log(mydata.unapprovedcustomers);
 								})
 
 					}
 					function approveBlog(blogid) {
 						$http
 								.get(
-										'http://localhost:8080/CollaborationMiddleware/blog/updatestatus?blogid=blogid')
+										'http://localhost:8080/CollaborationMiddleware/blog/updatestatus?blogid='+blogid)
 								.then(function(response) {
 									alert("Status updated");
 								}, function(errresponse) {
@@ -49,5 +50,18 @@ angular
 								});
 
 					}
+					function getallBlogs(){
+						$http
+								.get(
+										'http://localhost:8080/CollaborationMiddleware/blog/allblogs')
+								.then(function(response) {
+									mydata.blogs = null;
 
+								}, function(errresponse) {
+									
+									mydata.blogs = errresponse.data;
+									$location.path("/allblog");
+									//console.log(mydata.approvedcustomers);
+								});
+					}
 				});

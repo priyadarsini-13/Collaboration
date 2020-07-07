@@ -50,7 +50,7 @@ angular
 				function approveJob(job_Id) {
 					$http
 							.get(
-									'http://localhost:8080/CollaborationMiddleware/job/updatejobstatus?job_Id=job_Id')
+									'http://localhost:8080/CollaborationMiddleware/job/updatejobstatus?job_Id='+job_Id)
 							.then(function(response) {
 								alert("Jobstatus updated");
 							}, function(errresponse) {
